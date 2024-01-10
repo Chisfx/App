@@ -52,7 +52,7 @@ Update-Database
 ![image](https://github.com/Chisfx/App/assets/101854771/688518e9-a22c-41fa-b069-05fc623aca00)
 ![image](https://github.com/Chisfx/App/assets/101854771/afe9ca16-6afd-4022-8f1b-558e56121993)
 ### Estos son los EndPoint creados 
-```
+```js
 /api/User/CreateUsersTest/{top = 100} -- Crea N registros aleatorios, como default tiene 100
 /api/User/GetAll/{test?}/{top?} -- Obtiene todos los registros de la BD o con el parámetro test=true y top=N obtiene N registros aleatorios
 /api/User/{id} -- Obtiene todos los registro por id
