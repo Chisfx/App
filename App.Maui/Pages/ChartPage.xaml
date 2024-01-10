@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="App.Maui.Pages.ChartPage"
+             Title="ChartPage">
+    <VerticalStackLayout>
+        <Button Text="Refresh Users"
+                FontSize="10"
+                HorizontalOptions="Center"
+                Clicked="OnButtonClicked" />
+        
+        <Label FontSize="25" HorizontalOptions="CenterAndExpand" Text="Top 5 Email Host"/>
+        <microcharts:ChartView x:Name="pieChart" HeightRequest="200" WidthRequest="300"/>
+
+        <Label FontSize="25" HorizontalOptions="CenterAndExpand" Text="Top 5 Age"/>
+        <microcharts:ChartView x:Name="donutChart" HeightRequest="200" WidthRequest="300"/>
+    </VerticalStackLayout>
+</ContentPage>
