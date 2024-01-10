@@ -7,9 +7,17 @@ using App.Application.Features.Utils;
 using App.Domain.DTOs;
 namespace App.Api.Controllers
 {
+    /// <summary>
+    /// Controller for managing users.
+    /// </summary>
     [Route("api/[controller]")]
     public class UserController : BaseController<UserController>
     {
+        /// <summary>
+        /// Creates test users.
+        /// </summary>
+        /// <param name="top">The number of users to create.</param>
+        /// <returns>A list of created users.</returns>
         [HttpPost]
         [Route("CreateUsersTest")]
         public async Task<List<UserModel>> CreateUsersTestAsync(int top = 100)
@@ -27,6 +35,12 @@ namespace App.Api.Controllers
             return list;
         }
 
+        /// <summary>
+        /// Gets all users.
+        /// </summary>
+        /// <param name="test">Indicates if the data is fake.</param>
+        /// <param name="top">The number of users to retrieve.</param>
+        /// <returns>A list of users.</returns>
         [HttpGet]
         [Route("GetAll/{test?}/{top?}")]
         public async Task<List<UserModel>> GetAllAsync(bool test = false, int top = 0)
@@ -41,6 +55,11 @@ namespace App.Api.Controllers
             return response.Data;
         }
 
+        /// <summary>
+        /// Gets a user by ID.
+        /// </summary>
+        /// <param name="id">The ID of the user.</param>
+        /// <returns>The user with the specified ID.</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
@@ -58,6 +77,11 @@ namespace App.Api.Controllers
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Creates a new user.
+        /// </summary>
+        /// <param name="model">The user model.</param>
+        /// <returns>The created user.</returns>
         [HttpPost]
         [Route("Post")]
         public async Task<IActionResult> PostAsync([FromBody] UserModel model)
@@ -76,6 +100,11 @@ namespace App.Api.Controllers
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Updates an existing user.
+        /// </summary>
+        /// <param name="model">The updated user model.</param>
+        /// <returns>The updated user.</returns>
         [HttpPut]
         [Route("Put")]
         public async Task<IActionResult> PutAsync([FromBody] UserModel model)
@@ -85,6 +114,11 @@ namespace App.Api.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Deletes a user by ID.
+        /// </summary>
+        /// <param name="id">The ID of the user to delete.</param>
+        /// <returns>The deleted user.</returns>
         [HttpDelete]
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
@@ -103,6 +137,10 @@ namespace App.Api.Controllers
             return Ok(response.Data);
         }
 
+        /// <summary>
+        /// Gets the group age statistics.
+        /// </summary>
+        /// <returns>A list of group age statistics.</returns>
         [HttpGet]
         [Route("GetGroupAge")]
         public async Task<List<GroupAgeModel>> GetGroupAgeAsync()
@@ -117,6 +155,11 @@ namespace App.Api.Controllers
             return response.Data;
         }
 
+        /// <summary>
+        /// Gets the top group age statistics.
+        /// </summary>
+        /// <param name="top">The number of statistics to retrieve.</param>
+        /// <returns>The top group age statistics.</returns>
         [HttpGet]
         [Route("GetGroupAgeTop/{top}")]
         public async Task<List<GroupAgeModel>> GetGroupAgeTopAsync(int top)
@@ -125,6 +168,10 @@ namespace App.Api.Controllers
             return list.OrderByDescending(x => x.Count).Take(top).ToList();
         }
 
+        /// <summary>
+        /// Gets the group host statistics.
+        /// </summary>
+        /// <returns>A list of group host statistics.</returns>
         [HttpGet]
         [Route("GroupHost")]
         public async Task<List<GroupHostModel>> GetGroupHostAsync()
@@ -139,6 +186,11 @@ namespace App.Api.Controllers
             return response.Data;
         }
 
+        /// <summary>
+        /// Gets the top group host statistics.
+        /// </summary>
+        /// <param name="top">The number of statistics to retrieve.</param>
+        /// <returns>The top group host statistics.</returns>
         [HttpGet]
         [Route("GetGroupHostTop/{top}")]
         public async Task<List<GroupHostModel>> GetGroupHostTopAsync(int top)

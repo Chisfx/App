@@ -5,15 +5,27 @@ using System.Text.Json;
 
 namespace App.Api.Middlewares
 {
+    /// <summary>
+    /// Middleware for handling errors in the API.
+    /// </summary>
     public class ErrorHandlerMiddleware
     {
         private readonly RequestDelegate _next;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ErrorHandlerMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next middleware in the pipeline.</param>
         public ErrorHandlerMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
+        /// <summary>
+        /// Invokes the middleware.
+        /// </summary>
+        /// <param name="context">The HTTP context.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task Invoke(HttpContext context)
         {
             try
@@ -49,5 +61,4 @@ namespace App.Api.Middlewares
             }
         }
     }
-
 }

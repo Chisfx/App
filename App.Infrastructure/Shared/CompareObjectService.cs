@@ -5,6 +5,13 @@ namespace App.Infrastructure.Shared
 {
     public class CompareObjectService : ICompareObject
     {
+        /// <summary>
+        /// Compares two objects of the same type and checks if their properties have the same values.
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to compare.</typeparam>
+        /// <param name="o1">The first object to compare.</param>
+        /// <param name="o2">The second object to compare.</param>
+        /// <returns>True if the objects have the same property values, otherwise false.</returns>
         public bool Compare<T>(T o1, T o2)
         {
             bool result = true;
@@ -29,7 +36,7 @@ namespace App.Infrastructure.Shared
                 var sv1 = (v1 == null) ? null : Convert.ChangeType(v1, t);
                 var sv2 = (v2 == null) ? null : Convert.ChangeType(v2, t);
 
-                if (sv1 == null | sv2 == null)
+                if (sv1 == null || sv2 == null)
                 {
                     if (sv1 != sv2)
                     {

@@ -8,15 +8,36 @@ using App.Domain.DTOs;
 using Microsoft.Extensions.Logging;
 namespace App.Application.Features.Queries
 {
+    /// <summary>
+    /// Represents a query to get all users.
+    /// </summary>
     public class GetAllUserQuery : IRequest<Result<List<UserModel>>>
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether to use Faker to generate fake user data.
+        /// </summary>
         public bool Faker { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of users to retrieve.
+        /// </summary>
         public int Top { get; set; }
+
+        /// <summary>
+        /// Represents a handler for the GetAllUserQuery.
+        /// </summary>
         public class GetAllUserQueryHandler : IRequestHandler<GetAllUserQuery, Result<List<UserModel>>>
         {
             private readonly IRepositoryAsync<User> _repository;
             private readonly IMapper _mapper;
             private readonly ILogger<GetAllUserQuery> _logger;
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="GetAllUserQueryHandler"/> class.
+            /// </summary>
+            /// <param name="repository">The user repository.</param>
+            /// <param name="mapper">The mapper.</param>
+            /// <param name="logger">The logger.</param>
             public GetAllUserQueryHandler(
                 IRepositoryAsync<User> repository,
                 IMapper mapper,
@@ -27,6 +48,12 @@ namespace App.Application.Features.Queries
                 _logger = logger;
             }
 
+            /// <summary>
+            /// Handles the GetAllUserQuery request.
+            /// </summary>
+            /// <param name="request">The GetAllUserQuery request.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
+            /// <returns>A Result object containing the list of users.</returns>
             public async Task<Result<List<UserModel>>> Handle(GetAllUserQuery request, CancellationToken cancellationToken)
             {
                 try
@@ -35,9 +62,9 @@ namespace App.Application.Features.Queries
                     if (request.Faker)
                     {
                         var user = new Faker<UserModel>()
-                        .RuleFor(c => c.Name, (k, a) => $"{k.Name.FirstName()} {k.Name.LastName()}")
-                        .RuleFor(c => c.Email, (k, a) => k.Internet.Email(a.Name))
-                        .RuleFor(c => c.Age, k => k.Random.Int(18, 60));
+                            .RuleFor(c => c.Name, (k, a) => $"{k.Name.FirstName()} {k.Name.LastName()}")
+                            .RuleFor(c => c.Email, (k, a) => k.Internet.Email(a.Name))
+                            .RuleFor(c => c.Age, k => k.Random.Int(18, 60));
 
                         entities = user.Generate(request.Top);
                     }
@@ -56,6 +83,5 @@ namespace App.Application.Features.Queries
                 }
             }
         }
-
     }
 }

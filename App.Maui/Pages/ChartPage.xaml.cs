@@ -6,14 +6,23 @@ using SkiaSharp;
 
 namespace App.Maui.Pages;
 
+/// <summary>
+/// Represents the ChartPage class.
+/// </summary>
 public partial class ChartPage : ContentPage
 {
-	public ChartPage()
-	{
-		InitializeComponent();
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ChartPage"/> class.
+    /// </summary>
+    public ChartPage()
+    {
+        InitializeComponent();
         LoadEntriesAsync();
     }
 
+    /// <summary>
+    /// Loads the entries asynchronously.
+    /// </summary>
     private async void LoadEntriesAsync()
     {
         try
@@ -56,11 +65,15 @@ public partial class ChartPage : ContentPage
         }
         catch (Exception ex)
         {
-
             await DisplayAlert("Alert", ex.Message, "OK");
         }
     }
 
+    /// <summary>
+    /// Handles the button clicked event.
+    /// </summary>
+    /// <param name="sender">The sender object.</param>
+    /// <param name="e">The event arguments.</param>
     private void OnButtonClicked(object sender, EventArgs e)
     {
         LoadEntriesAsync();

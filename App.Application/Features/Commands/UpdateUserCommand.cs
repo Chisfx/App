@@ -8,13 +8,34 @@ using App.Domain.DTOs;
 using Microsoft.Extensions.Logging;
 namespace App.Application.Features.Commands
 {
+    /// <summary>
+    /// Represents a command to update a user.
+    /// </summary>
     public class UpdateUserCommand : IRequest<Result<UserModel>>
     {
+        /// <summary>
+        /// Gets or sets the ID of the user.
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the user.
+        /// </summary>
         public string Name { get; set; } = default!;
+
+        /// <summary>
+        /// Gets or sets the email of the user.
+        /// </summary>
         public string Email { get; set; } = default!;
+
+        /// <summary>
+        /// Gets or sets the age of the user.
+        /// </summary>
         public int Age { get; set; }
 
+        /// <summary>
+        /// Represents the handler for the UpdateUserCommand.
+        /// </summary>
         public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Result<UserModel>>
         {
             private readonly IRepositoryAsync<User> _repository;
@@ -22,6 +43,10 @@ namespace App.Application.Features.Commands
             private IUnitOfWork _unitOfWork { get; set; }
             private readonly ICompareObject _compare;
             private readonly ILogger<UpdateUserCommand> _logger;
+
+            /// <summary>
+            /// Initializes a new instance of the UpdateUserCommandHandler class.
+            /// </summary>
             public UpdateUserCommandHandler(
                 IRepositoryAsync<User> repository,
                 IUnitOfWork unitOfWork,
@@ -36,12 +61,14 @@ namespace App.Application.Features.Commands
                 _logger = logger;
             }
 
+            /// <summary>
+            /// Handles the UpdateUserCommand.
+            /// </summary>
             public async Task<Result<UserModel>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
             {
                 try
                 {
                     UserModel result = null;
-
                     string msg = string.Empty;
 
                     await _unitOfWork.BeginTransactionAsync(cancellationToken);
@@ -57,7 +84,7 @@ namespace App.Application.Features.Commands
                         var exist = await _repository.AnyAsync(p => p.Id != request.Id && p.Email == request.Email);
                         if (exist)
                         {
-                            msg = $"Email {request.Email} already exist.";
+                            msg = $"Email {request.Email} already exists.";
                         }
                         else
                         {
@@ -76,7 +103,10 @@ namespace App.Application.Features.Commands
 
                         await _unitOfWork.Commit(cancellationToken);
 
-                        if (entity.Id == 0) throw new Exception("Database Error");
+                        if (entity.Id == 0)
+                        {
+                            throw new Exception("Database Error");
+                        }
 
                         result = _mapper.Map<UserModel>(entity);
                     }
@@ -93,6 +123,5 @@ namespace App.Application.Features.Commands
                 }
             }
         }
-
     }
 }

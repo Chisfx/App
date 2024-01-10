@@ -3,9 +3,19 @@ using System.Net.Http.Json;
 using System.Text.Json;
 namespace App.Maui.Abstractions
 {
+    /// <summary>
+    /// This class provides methods for making HTTP requests.
+    /// </summary>
     public class ClientHttp
     {
         private static readonly HttpClient _httpClient = new HttpClient();
+
+        /// <summary>
+        /// Sends a GET request to the specified API endpoint and returns a list of objects.
+        /// </summary>
+        /// <typeparam name="T">The type of objects to retrieve.</typeparam>
+        /// <param name="rutaapi">The API endpoint.</param>
+        /// <returns>A list of objects.</returns>
         public static async Task<List<T>> GetAll<T>(string rutaapi)
         {
             List<T> result = null;
@@ -21,6 +31,12 @@ namespace App.Maui.Abstractions
             return result;
         }
 
+        /// <summary>
+        /// Sends a GET request to the specified API endpoint and returns an object of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of object to retrieve.</typeparam>
+        /// <param name="rutaapi">The API endpoint.</param>
+        /// <returns>An object of the specified type.</returns>
         public static async Task<T> Get<T>(string rutaapi)
         {
             T result = default;
@@ -37,6 +53,11 @@ namespace App.Maui.Abstractions
             return result;
         }
 
+        /// <summary>
+        /// Sends a GET request to the specified API endpoint and returns an integer.
+        /// </summary>
+        /// <param name="rutaapi">The API endpoint.</param>
+        /// <returns>An integer.</returns>
         public static async Task<int> GetInt(string rutaapi)
         {
             int result = 0;
@@ -48,10 +69,17 @@ namespace App.Maui.Abstractions
             }
             catch (Exception ex)
             {
+                // Handle the exception here
+                Console.WriteLine(ex.Message);
             }
             return result;
         }
 
+        /// <summary>
+        /// Sends a DELETE request to the specified API endpoint and returns an integer.
+        /// </summary>
+        /// <param name="rutaapi">The API endpoint.</param>
+        /// <returns>An integer.</returns>
         public static async Task<int> Delete(string rutaapi)
         {
             int result = 0;
@@ -67,10 +95,19 @@ namespace App.Maui.Abstractions
             }
             catch (Exception ex)
             {
+                // Handle the exception here
+                Console.WriteLine(ex.Message);
             }
             return result;
         }
 
+        /// <summary>
+        /// Sends a POST request to the specified API endpoint with the specified object and returns an integer.
+        /// </summary>
+        /// <typeparam name="T">The type of object to send.</typeparam>
+        /// <param name="rutaapi">The API endpoint.</param>
+        /// <param name="obj">The object to send.</param>
+        /// <returns>An integer.</returns>
         public static async Task<int> Post<T>(string rutaapi, T obj)
         {
             int result = 0;
@@ -86,15 +123,24 @@ namespace App.Maui.Abstractions
             }
             catch (Exception ex)
             {
+                // Handle the exception here
+                Console.WriteLine(ex.Message);
             }
             return result;
         }
 
+        /// <summary>
+        /// Sends a POST request to the specified API endpoint with the specified object and returns a list of objects.
+        /// </summary>
+        /// <typeparam name="T">The type of object to send.</typeparam>
+        /// <param name="rutaapi">The API endpoint.</param>
+        /// <param name="obj">The object to send.</param>
+        /// <returns>A list of objects.</returns>
         public static async Task<List<T>> PostList<T>(string rutaapi, T obj)
         {
             List<T> result = new List<T>();
             try
-            {      
+            {
                 _httpClient.BaseAddress = new Uri(Router.UrlBase);
                 var response = await _httpClient.PostAsJsonAsync<T>(rutaapi, obj);
                 if (response.IsSuccessStatusCode)
@@ -105,7 +151,8 @@ namespace App.Maui.Abstractions
             }
             catch (Exception ex)
             {
-                
+                // Handle the exception here
+                Console.WriteLine(ex.Message);
             }
             return result;
         }

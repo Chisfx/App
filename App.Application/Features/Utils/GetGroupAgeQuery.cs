@@ -5,18 +5,36 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 namespace App.Application.Features.Utils
 {
+    /// <summary>
+    /// Represents a query to get the group age.
+    /// </summary>
     public class GetGroupAgeQuery : IRequest<Result<List<GroupAgeModel>>>
     {
+        /// <summary>
+        /// Represents the handler for the GetGroupAgeQuery.
+        /// </summary>
         public class GetGroupAgeQueryHandler : IRequestHandler<GetGroupAgeQuery, Result<List<GroupAgeModel>>>
         {
             private readonly IMediator _mediator;
             private readonly ILogger<GetGroupAgeQuery> _logger;
+
+            /// <summary>
+            /// Initializes a new instance of the GetGroupAgeQueryHandler class.
+            /// </summary>
+            /// <param name="mediator">The mediator.</param>
+            /// <param name="logger">The logger.</param>
             public GetGroupAgeQueryHandler(IMediator mediator, ILogger<GetGroupAgeQuery> logger)
             {
                 _mediator = mediator;
                 _logger = logger;
             }
 
+            /// <summary>
+            /// Handles the GetGroupAgeQuery request.
+            /// </summary>
+            /// <param name="request">The GetGroupAgeQuery request.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
+            /// <returns>A Result containing a list of GroupAgeModel.</returns>
             public async Task<Result<List<GroupAgeModel>>> Handle(GetGroupAgeQuery request, CancellationToken cancellationToken)
             {
                 try
@@ -48,6 +66,5 @@ namespace App.Application.Features.Utils
                 }
             }
         }
-
     }
 }

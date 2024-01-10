@@ -9,6 +9,10 @@ namespace App.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds the infrastructure layer to the service collection.
+        /// </summary>
+        /// <param name="services">The service collection.</param>
         public static void AddInfrastructureLayer(this IServiceCollection services)
         {
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();

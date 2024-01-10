@@ -6,18 +6,36 @@ using Microsoft.Extensions.Logging;
 using System.Net.Mail;
 namespace App.Application.Features.Utils
 {
+    /// <summary>
+    /// Represents a query to get the group hosts.
+    /// </summary>
     public class GetGroupHostQuery : IRequest<Result<List<GroupHostModel>>>
     {
+        /// <summary>
+        /// Represents the handler for the GetGroupHostQuery.
+        /// </summary>
         public class GetGroupHostQueryHandler : IRequestHandler<GetGroupHostQuery, Result<List<GroupHostModel>>>
         {
             private readonly IMediator _mediator;
             private readonly ILogger<GetGroupHostQuery> _logger;
+
+            /// <summary>
+            /// Initializes a new instance of the GetGroupHostQueryHandler class.
+            /// </summary>
+            /// <param name="mediator">The mediator.</param>
+            /// <param name="logger">The logger.</param>
             public GetGroupHostQueryHandler(IMediator mediator, ILogger<GetGroupHostQuery> logger)
             {
                 _mediator = mediator;
                 _logger = logger;
             }
 
+            /// <summary>
+            /// Handles the GetGroupHostQuery request.
+            /// </summary>
+            /// <param name="request">The GetGroupHostQuery request.</param>
+            /// <param name="cancellationToken">The cancellation token.</param>
+            /// <returns>A Result containing a list of GroupHostModel.</returns>
             public async Task<Result<List<GroupHostModel>>> Handle(GetGroupHostQuery request, CancellationToken cancellationToken)
             {
                 try
@@ -49,6 +67,5 @@ namespace App.Application.Features.Utils
                 }
             }
         }
-
     }
 }
