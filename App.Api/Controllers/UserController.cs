@@ -28,7 +28,7 @@ namespace App.Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetAll/{test?}")]
+        [Route("GetAll/{test?}/{top?}")]
         public async Task<List<UserModel>> GetAllAsync(bool test = false, int top = 0)
         {
             var response = await _mediator.Send(new GetAllUserQuery() { Faker = test, Top = top });
