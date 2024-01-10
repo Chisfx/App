@@ -1,2 +1,2 @@
 # App
-* ##Domain [link text](App.Domain/README.md)
+* [Domain](App.Domain/README.md)
