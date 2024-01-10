@@ -64,3 +64,4 @@ Update-Database
 /api/User/GroupHost // Obtiene un agrupamiento por dominio de email de usuarios
 /api/User/GetGroupHostTop/{top} // Obtiene un Top del agrupamiento por dominio de email de usuarios
 ```
+## Por último se tiene que compilar y publicar en un servidor, en mi caso es el http://apifx.somee.com/
