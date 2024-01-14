@@ -1,9 +1,7 @@
 ﻿using App.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.CodeAnalysis;
 namespace App.Api.Extensions
 {
-    [ExcludeFromCodeCoverage]
     public static class ServiceCollectionExtensions
     {
         /// <summary>
