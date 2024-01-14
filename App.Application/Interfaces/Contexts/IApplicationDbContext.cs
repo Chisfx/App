@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using App.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Data;
 
@@ -37,5 +39,7 @@ namespace App.Application.Interfaces.Contexts
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+
+        DbSet<User> Users { get; set; }
     }
 }

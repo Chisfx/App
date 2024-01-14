@@ -6,6 +6,7 @@ using App.Domain.Entities;
 using MediatR;
 using App.Domain.DTOs;
 using Microsoft.Extensions.Logging;
+using Bogus.Extensions;
 namespace App.Application.Features.Queries
 {
     /// <summary>
@@ -62,8 +63,8 @@ namespace App.Application.Features.Queries
                     if (request.Faker)
                     {
                         var user = new Faker<UserModel>()
-                            .RuleFor(c => c.Name, (k, a) => $"{k.Name.FirstName()} {k.Name.LastName()}")
-                            .RuleFor(c => c.Email, (k, a) => k.Internet.Email(a.Name))
+                            .RuleFor(c => c.Name, (k, a) => k.Name.FullName().ClampLength(min: 3, max: 50))
+                            .RuleFor(c => c.Email, (k, a) => k.Internet.Email(a.Name).ClampLength(min: 5))
                             .RuleFor(c => c.Age, k => k.Random.Int(18, 60));
 
                         entities = user.Generate(request.Top);

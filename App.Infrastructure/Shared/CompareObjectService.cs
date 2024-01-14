@@ -19,6 +19,12 @@ namespace App.Infrastructure.Shared
             {
                 PropertyInfo pi2 = o2.GetType().GetProperty(pi1.Name);
 
+                if (pi2 == null)
+                {
+                    result = false;
+                    break;
+                }
+
                 var pt1 = pi1.PropertyType;
                 var pt2 = pi2.PropertyType;
 

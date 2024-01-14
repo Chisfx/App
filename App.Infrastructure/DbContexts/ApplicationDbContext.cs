@@ -34,6 +34,8 @@ namespace App.Infrastructure.DbContexts
         /// </summary>
         public DatabaseFacade DataBase => Database;
 
+        public DbSet<User> Users { get; set; }
+
         /// <summary>
         /// Saves the changes made in the context asynchronously.
         /// </summary>
