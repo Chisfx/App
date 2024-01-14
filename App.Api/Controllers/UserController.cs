@@ -5,6 +5,7 @@ using App.Application.Features.Queries;
 using Microsoft.AspNetCore.Mvc;
 using App.Application.Features.Utils;
 using App.Domain.DTOs;
+using AspNetCoreHero.Results;
 namespace App.Api.Controllers
 {
     /// <summary>
@@ -28,7 +29,7 @@ namespace App.Api.Controllers
 
             foreach (var user in users)
             {
-                var result = await CreateUserAsync(user);
+                var result = await CreateOrUpdateUserAsync(user);
                 list.Add(result);
             }
 
@@ -86,18 +87,9 @@ namespace App.Api.Controllers
         [Route("Post")]
         public async Task<IActionResult> PostAsync([FromBody] UserModel model)
         {
-            var response = await _mediator.Send(_mapper.Map<CreateUserCommand>(model));
+            var user = await CreateOrUpdateUserAsync(model);
 
-            if (!response.Succeeded)
-            {
-                throw new ApiException(response.Message);
-            }
-            else if (!string.IsNullOrEmpty(response.Message))
-            {
-                throw new ApiException(response.Message);
-            }
-
-            return Ok(response.Data);
+            return Ok(user);
         }
 
         /// <summary>
@@ -109,7 +101,7 @@ namespace App.Api.Controllers
         [Route("Put")]
         public async Task<IActionResult> PutAsync([FromBody] UserModel model)
         {
-            var user = await CreateUserAsync(model);
+            var user = await CreateOrUpdateUserAsync(model);
 
             return Ok(user);
         }
@@ -199,9 +191,18 @@ namespace App.Api.Controllers
             return list.OrderByDescending(x => x.Count).Take(top).ToList();
         }
 
-        private async Task<UserModel> CreateUserAsync(UserModel model)
+        private async Task<UserModel> CreateOrUpdateUserAsync(UserModel model)
         {
-            var response = await _mediator.Send(_mapper.Map<CreateUserCommand>(model));
+            Result<UserModel> response;
+
+            if (model.Id > 0)
+            {
+                response = await _mediator.Send(_mapper.Map<UpdateUserCommand>(model));
+            }
+            else
+            {
+                response = await _mediator.Send(_mapper.Map<CreateUserCommand>(model));
+            }
 
             if (!response.Succeeded)
             {
