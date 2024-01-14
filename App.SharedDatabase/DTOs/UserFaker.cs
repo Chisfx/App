@@ -12,6 +12,14 @@ namespace App.SharedTest.DTOs
             RuleFor(c => c.Email, (k, a) => k.Internet.Email(a.Name).ClampLength(min: 5));
             RuleFor(c => c.Age, k => k.Random.Int(18, 60));
         }
+
+        public UserFaker(int id)
+        {
+            RuleFor(x => x.Id, f => id);
+            RuleFor(c => c.Name, k => k.Name.FullName().ClampLength(min: 3, max: 50));
+            RuleFor(c => c.Email, (k, a) => k.Internet.Email(a.Name).ClampLength(min: 5));
+            RuleFor(c => c.Age, k => k.Random.Int(18, 60));
+        }
         public UserFaker(Func<Faker, object> setterName)
         {
             RuleFor(x => x.Id, f => f.Random.Int(1, 1000));

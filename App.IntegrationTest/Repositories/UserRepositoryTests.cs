@@ -60,7 +60,7 @@ namespace App.IntegrationTest.Repositories
             using (var context = Fixture.CreateContext())
             {
                 var repository = new RepositoryAsync<User>(context);
-                var min = repository.Entities.Max(k => k.Id);
+                var min = repository.Entities.Min(k => k.Id);
                 var max = repository.Entities.Max(k => k.Id);
                 var random = new Bogus.Randomizer();
                 var userId = random.Number(min, max);
@@ -118,7 +118,7 @@ namespace App.IntegrationTest.Repositories
                 using (var context = Fixture.CreateContext(transaction))
                 {
                     repository = new RepositoryAsync<User>(context);
-                    var min = repository.Entities.Max(k => k.Id);
+                    var min = repository.Entities.Min(k => k.Id);
                     var max = repository.Entities.Max(k => k.Id);
                     var random = new Bogus.Randomizer();
                     userId = random.Number(min, max);
@@ -143,10 +143,6 @@ namespace App.IntegrationTest.Repositories
 
                     entity = await repository.GetByIdAsync(userId);
 
-                    //_testOutputHelper.WriteLine(JsonSerializer.Serialize<UserModel>(model));
-                    //_testOutputHelper.WriteLine(JsonSerializer.Serialize<User>(entity));
-                    //_testOutputHelper.WriteLine(userId.ToString());
-
                     Assert.NotNull(entity);
                     Assert.Equal(model.Name, entity.Name);
                     Assert.Equal(model.Email, entity.Email);
@@ -167,7 +163,7 @@ namespace App.IntegrationTest.Repositories
                 using (var context = Fixture.CreateContext(transaction))
                 {
                     repository = new RepositoryAsync<User>(context);
-                    var min = repository.Entities.Max(k => k.Id);
+                    var min = repository.Entities.Min(k => k.Id);
                     var max = repository.Entities.Max(k => k.Id);
                     var random = new Bogus.Randomizer();
                     userId = random.Number(min, max);
