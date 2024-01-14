@@ -12,10 +12,14 @@ namespace App.Application.Mappings
         public UserProfile()
         {
             // Maps CreateUserCommand to User and vice versa
-            CreateMap<CreateUserCommand, User>().ReverseMap();
+            CreateMap<User, CreateUserCommand>();
+            CreateMap<CreateUserCommand, User>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());// Ignores Id property when mapping
 
             // Maps CreateUserCommand to UserModel and vice versa
-            CreateMap<CreateUserCommand, UserModel>().ReverseMap();
+            CreateMap<UserModel, CreateUserCommand>();
+            CreateMap<CreateUserCommand, UserModel>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());// Ignores Id property when mapping
 
             // Maps UpdateUserCommand to User and vice versa
             CreateMap<UpdateUserCommand, User>().ReverseMap();
@@ -24,7 +28,9 @@ namespace App.Application.Mappings
             CreateMap<UpdateUserCommand, UserModel>().ReverseMap();
 
             // Maps User to UserModel and vice versa
-            CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<User, UserModel>();
+            CreateMap<UserModel, User>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());// Ignores Id property when mapping
         }
     }
 }

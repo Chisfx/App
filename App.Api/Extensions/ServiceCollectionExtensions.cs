@@ -1,9 +1,9 @@
 ﻿using App.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
-using Serilog.Sinks.MSSqlServer;
-using Serilog;
+using System.Diagnostics.CodeAnalysis;
 namespace App.Api.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public static class ServiceCollectionExtensions
     {
         /// <summary>
