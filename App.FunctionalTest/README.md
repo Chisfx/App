@@ -1,4 +1,4 @@
-# FuntionalTest
+# FunctionalTest
 ## En este proyecto se realizaron pruebas funcionales utilizando InMemory, se agregó una configuración de tomar en cuneta las transacciones ya que en InMemory no se pueden utilizar, por esta misma razón se agregó un atributo a los métodos para que se ejecutaran en un orden especifico.
 * .Net 7
 * Api
