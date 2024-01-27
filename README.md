@@ -5,7 +5,7 @@
 * [Api](App.Api/README.md)
 * [Web](app.web/README.md)
 * [Maui](App.Maui/README.md)
-## En este repositorio se encuentran 6 proyectos en los cuales viene documentado en cada uno que tecnologías se ocuparon, así como configuraciones, pruebas y ejecución.
+## En este repositorio se encuentran 9 proyectos en los cuales viene documentado en cada uno que tecnologías se ocuparon, así como configuraciones, pruebas y ejecución.
 ### El esquema que se utilizo fue un catálogo de usuarios
 ```c#
 /// <summary>
@@ -34,3 +34,7 @@ public class User
     public int Age { get; set; }
 }
 ```
+![image](https://github.com/Chisfx/App/assets/101854771/688518e9-a22c-41fa-b069-05fc623aca00)
+![image](https://github.com/Chisfx/App/assets/101854771/afe9ca16-6afd-4022-8f1b-558e56121993)
+![image](https://github.com/Chisfx/App/assets/101854771/f821e294-773e-4f5d-b7fe-7df6d670f733)
+![image](https://github.com/Chisfx/App/assets/101854771/822aa486-627d-416f-94c9-aab88e4e7a42)
