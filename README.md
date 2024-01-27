@@ -8,7 +8,7 @@
 * [SharedDatabase](App.SharedDatabase/README.md)
 * [UnitTest](App.UnitTest/README.md)
 * [IntegrationTest](App.IntegrationTest/README.md)
-* [FuntionalTest](App.FuntionalTest/README.md)
+* [FunctionalTest](App.FunctionalTest/README.md)
 ## En este repositorio se encuentran 10 proyectos en los cuales viene documentado en cada uno que tecnologías se ocuparon, así como configuraciones, pruebas y ejecución.
 ### El esquema que se utilizo fue un catálogo de usuarios
 ```c#
