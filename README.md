@@ -42,5 +42,5 @@ public class User
 ![image](https://github.com/Chisfx/App/assets/101854771/afe9ca16-6afd-4022-8f1b-558e56121993)
 ![image](https://github.com/Chisfx/App/assets/101854771/f821e294-773e-4f5d-b7fe-7df6d670f733)
 ![image](https://github.com/Chisfx/App/assets/101854771/822aa486-627d-416f-94c9-aab88e4e7a42)
-<img width="398" alt="image" src="https://github.com/Chisfx/App/assets/101854771/470373b8-7ca8-4971-b6ae-ddf69c70ae00">
+![image](https://github.com/Chisfx/App/assets/101854771/470373b8-7ca8-4971-b6ae-ddf69c70ae00)
 
