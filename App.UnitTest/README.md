@@ -1,5 +1,5 @@
 # UnitTest
-## En este proyecto se realizaron pruebas unitarias en validación de entidades, mapeos y métodos de ayuda; Los cuales al ejecutarse sales satisfactorios
+## En este proyecto se realizaron pruebas unitarias en validación de entidades, mapeos y métodos de ayuda.
 * .Net 7
 * SharedTest
 * Microsoft.NET.Test.Sdk
