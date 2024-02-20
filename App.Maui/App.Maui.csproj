@@ -54,7 +54,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\App.Domain\App.Domain.csproj" />
+	  <ProjectReference Include="..\$(SolutionName).Domain\$(SolutionName).Domain.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

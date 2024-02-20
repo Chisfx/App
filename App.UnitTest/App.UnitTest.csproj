@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.SharedDatabase\App.SharedTest.csproj" />
+    <ProjectReference Include="..\$(SolutionName).SharedDatabase\$(SolutionName).SharedTest.csproj" />
   </ItemGroup>
 
 </Project>

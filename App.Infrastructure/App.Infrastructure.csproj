@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Application\App.Application.csproj" />
+    <ProjectReference Include="..\$(SolutionName).Application\$(SolutionName).Application.csproj" />
   </ItemGroup>
 
 </Project>
