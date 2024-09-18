@@ -5,7 +5,7 @@
              x:Class="App.Maui.App">
     <Application.Resources>
         <ResourceDictionary>
-            <x:String x:Key="UrlBase">http://apifx.somee.com</x:String>
+            <x:String x:Key="UrlBase">https://localhost:7052</x:String>
             <x:String x:Key="User">/api/user</x:String>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />

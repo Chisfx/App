@@ -1,14 +1,20 @@
 ﻿using App.Maui.Helpers;
+using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-namespace App.Maui.Abstractions
+namespace App.Maui.Helpers
 {
     /// <summary>
     /// This class provides methods for making HTTP requests.
     /// </summary>
     public class ClientHttp
     {
+#if DEBUG
+        private static HttpsClientHandlerService handler = new HttpsClientHandlerService();
+        private static readonly HttpClient _httpClient = new HttpClient(handler.GetPlatformMessageHandler());
+    #else
         private static readonly HttpClient _httpClient = new HttpClient();
+    #endif
 
         /// <summary>
         /// Sends a GET request to the specified API endpoint and returns a list of objects.

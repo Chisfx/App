@@ -1,5 +1,4 @@
 using App.Domain.DTOs;
-using App.Maui.Abstractions;
 using App.Maui.Helpers;
 using Microcharts;
 using SkiaSharp;

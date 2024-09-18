@@ -8,11 +8,15 @@
         /// <summary>
         /// Gets the base URL.
         /// </summary>
-        public static string UrlBase => Microsoft.Maui.Controls.Application.Current.Resources["UrlBase"].ToString();
+        #if DEBUG
+        public static string UrlBase => DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:7052" : Application.Current.Resources["UrlBase"].ToString();
+        #else
+        public static string UrlBase => Application.Current.Resources["UrlBase"].ToString();
+        #endif
 
         /// <summary>
         /// Gets the user URL.
         /// </summary>
-        public static string UrlUser => Microsoft.Maui.Controls.Application.Current.Resources["User"].ToString();
+        public static string UrlUser => Application.Current.Resources["User"].ToString();
     }
 }

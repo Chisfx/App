@@ -6,7 +6,7 @@ import axios from 'axios'
 import VueSimpleAlert from 'vue-simple-alert';
 
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'http://apifx.somee.com/';
+axios.defaults.baseURL = 'https://localhost:7052/';
 Vue.use(VueSimpleAlert);
 
 new Vue({
